@@ -4,22 +4,36 @@
 require_once './libs/Database.php';
 require_once './libs/Task.php';
 
-// Create a database connection
+
+/**
+ * 
+ * CREATE DATABASE CONNECTION 
+ * 
+ * */ 
 $database = new Database();
 $conn = $database->getConnection();
 
-// Create a User instance
+
+
+/**
+ * 
+ * CREATE AN USER INSTANCE 
+ * 
+ * */
 $task = new Task($conn);
 
-// Define variables and set to empty values
+
+/**
+ * 
+ * DEFINE INITIAL VALIRABELS WITH EMPTY VALUE
+ * 
+ * */
 $title = $description = $status = "";
 $titleErr = $descriptionErr = $statusErr = "";
 $success = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // echo "submiting";
-    // Validate title
     if (empty($_POST["title"])) {
         $titleErr = "Title is required";
     } else {
@@ -27,6 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if title only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/", $title)) {
             $titleErr = "Only letters and white space allowed";
+            $title = '';
+        } else {
+            $title = test_input($_POST["title"]);
         }
     }
 

@@ -1,6 +1,12 @@
 <?php
 class Database
 {
+    
+    /**
+    * 
+    * DATABASE VAIRABLES
+    * 
+    * */
     private $host = "localhost";
     private $username = "root";
     private $password = "";
@@ -9,6 +15,11 @@ class Database
 
     public function __construct()
     {
+        /**
+        * 
+        *  MYSQL CONNECTION
+        * 
+        * */
         $this->conn = new mysqli($this->host, $this->username, $this->password, $this->dbname);
 
         if ($this->conn->connect_error) {
@@ -16,6 +27,11 @@ class Database
         }
     }
 
+    /**
+    * 
+    *  ESTABSISH THE CONNECTION
+    * 
+    * */
     public function getConnection()
     {
         return $this->conn;

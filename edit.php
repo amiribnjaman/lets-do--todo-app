@@ -3,20 +3,39 @@
 
 require_once './libs/Database.php';
 require_once './libs/Task.php';
-// Create a database connection
+
+/**
+ * 
+ * CREATE DATABASE CONNECTION 
+ * 
+ * */ 
 $database = new Database();
 $conn = $database->getConnection();
 
-// Create a User instance
+
+/**
+ * 
+ * CREATE AN USER INSTANCE 
+ * 
+ * */
 $task = new Task($conn);
 
 
-// GETTING WANTED TASK CURRENT VALUES
+/**
+ * 
+ * GETTING WANTED TASK CURRENT VALUES
+ * 
+ * */ 
 if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])){
     $id = $_GET["id"];
     $result = $task->getOne($id);
 }
 
+/**
+ * 
+ * UPDATE TODO/TASK 
+ * 
+ * */ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $taskId = $_POST["id"];
     $title = $_POST["title"];
@@ -32,6 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+/**
+ * 
+ * TESTING USER INPUT VALUE FOR VALIDATION
+ * 
+ * */ 
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);

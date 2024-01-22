@@ -6,15 +6,29 @@
 require_once './libs/Database.php';
 require_once './libs/Task.php';
 
-// Create a database connection
+/**
+ * 
+ * CREATE DATABASE CONNECTION 
+ * 
+ * */ 
 $database = new Database();
 $conn = $database->getConnection();
 
-// Create a User instance
+/**
+ * 
+ * CREATE AN USER INSTANCE 
+ * 
+ * */
 $task = new Task($conn);
+
 $allTask = $task->getAllTasks();
 
-// DELETE TASK 
+
+/**
+ * 
+ *  DELETE A TASK THROUGH AN ID 
+ * 
+ * */ 
 $success = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["taskId"])) {
     $taskId = $_POST["taskId"];
@@ -46,10 +60,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["taskId"])) {
   <tbody>
         <?php 
         while($row = $allTask->fetch_assoc()){
+
+          
+          /**
+          * 
+          *  CHECK IF DESCIRPTION LENGHT TO LARGE-> THEN SHORT IT AND PROVIDE NEW STRING INTO NEW VAIRABLE
+          * 
+          * */ 
+          $trimedDescription; 
+          if(strlen($row["description"]) > 50){
+            $trimedDescription = substr($row["description"], 0, 50). '...';
+          } else {
+            $trimedDescription = $row["description"];
+          }
             echo "<tr>";
             echo "<td>" . $row["id"] . "</td>";
             echo "<td>" . $row["title"] . "</td>";
-            echo "<td>" . $row["description"] . "</td>";
+            echo "<td>" . $trimedDescription . "</td>";
             echo "<td>" . $row["status"] . "</td>";
             echo "<td class='d-flex gap-3'>
                 <a class='btn btn-primary' href='/rtsoft/edit.php?id=" . $row["id"] . "'>Edit</a>
