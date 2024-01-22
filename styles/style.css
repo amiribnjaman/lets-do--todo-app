@@ -6,3 +6,12 @@ body{
 .create_button{
     
 }
+.task-data a{
+    color: #000;
+    text-decoration: none;
+}
+
+.task-data a:hover{
+    color:green;
+    text-decoration: underline;
+}

@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["taskId"])) {
           }
             echo "<tr>";
             echo "<td>" . $row["id"] . "</td>";
-            echo "<td>" . $row["title"] . "</td>";
+            echo "<td class='task-data'> <a class='task-title' href='/rtsoft/details.php?id=".$row["id"]."'>" . $row["title"] . "</a></td>";
             echo "<td>" . $trimedDescription . "</td>";
             echo "<td>" . $row["status"] . "</td>";
             echo "<td class='d-flex gap-3'>
@@ -84,7 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["taskId"])) {
                         <input type='hidden' name='taskId' value='" . $row["id"] . "'>
                         <button type='submit' class='btn btn-danger'>Delete</button>
                     </form>
-
                 
             </td>";
             echo "</tr>";
