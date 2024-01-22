@@ -58,6 +58,7 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
+
 ?>
 
 <div class="container-sm mt-2 mx-auto w-50 ">
@@ -79,7 +80,7 @@ function test_input($data) {
             <option selected value="incomplete">Incomplete</option>
             <option value="complete">Complete</option>
         </select>
-                    <?php if (!empty($statusErr)): ?>
+        <?php if (!empty($statusErr)): ?>
         <span class="text-danger"> <?php echo $statusErr; ?></span>
     <?php endif; ?>
 
@@ -92,7 +93,7 @@ function test_input($data) {
 
         </div>
         <div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success">Create</button>
         </div>
     </form>
 </div>
