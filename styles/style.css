@@ -7,11 +7,11 @@ body{
     
 }
 .task-data a{
-    color: #000;
+    color: rgb(238, 115, 14);
     text-decoration: none;
 }
 
 .task-data a:hover{
-    color:green;
+    color:rgb(6, 168, 237);
     text-decoration: underline;
 }
