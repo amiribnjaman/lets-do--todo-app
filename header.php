@@ -13,7 +13,7 @@
 <div class="">
     <nav class="navbar bg-body-tertiary my-1">
         <div class="container-sm">
-            <a class="navbar-brand" href="">Let's Do</a>
+            <a class="navbar-brand" href="/rtsoft">Let's Do</a>
                 <a class="btn btn-outline-success" type="submit" href="create-task.php">Create Task</a>
         </div>
     </nav>
