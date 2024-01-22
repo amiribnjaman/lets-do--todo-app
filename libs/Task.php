@@ -16,7 +16,12 @@ class Task
 
     public function getAllTasks()
     {
-        $sql = "SELECT * FROM todos";
+        $sql = "SELECT * FROM todos ORDER BY id DESC";
+        return $this->conn->query($sql);
+    }
+
+    public function deleteTask($taskId) {
+        $sql = "DELETE FROM todos WHERE id=$taskId";
         return $this->conn->query($sql);
     }
 }
