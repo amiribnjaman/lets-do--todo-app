@@ -9,7 +9,7 @@ $database = new Database();
 $conn = $database->getConnection();
 
 // Create a User instance
-$user = new Task($conn);
+$task = new Task($conn);
 
 // Define variables and set to empty values
 $title = $description = $status = "";
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If there are no validation errors, create the user
     if (!empty($title) && !empty($description) && !empty($status)) {
-        $user->create($title, $description, $status);
+        $task->createTask($title, $description, $status);
         $success = "Task created successfully!";
     }
 }
